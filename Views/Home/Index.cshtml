@@ -1,0 +1,76 @@
+﻿@model Api.Valores
+@{
+    ViewData["Title"] = "Convertidor";
+}
+
+<div class="text-center pt-3 pb-5">
+    <h1 class="tituloapp display-4">Convertidor de Moneda  </h1>
+    
+</div>
+
+<div class="container-md">
+    <div class="cardconverter card border-2 p-2 bg-success bg-opacity-75">
+        <div class="card-title text-center text-black mb-3">Monto en ARG</div>
+        <div class="input-group mb-5 ps-5 pe-5 ">
+            <span class="input-group-text ">$</span>
+            <input type="number" min="1" class=" form-control input">
+                
+        </div>
+    </div>
+    
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Dolar Blue</h6>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>@Model.Blue.Value_Sell</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Dolar Oficial</h6>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>@Model.Oficial.Value_Sell</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Dolar Solidario</h6>
+                    <h2 class="dSolidario text-right"><i class="fa fa-refresh f-left"></i><span id="dSolidario">@Model.Oficial.Value_Sell </span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Euro Blue</h6>
+                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>@Model.Blue_Euro.Value_Sell</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let dolarOficial = parseFloat(@Model.Oficial.Value_Sell);
+        let dolarSolidario = dolarOficial * 1.65;
+        document.getElementById('dSolidario').textContent = dolarSolidario.toFixed(2)
+
+    </script>
+
+</div>
+
+
