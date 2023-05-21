@@ -12,10 +12,11 @@
     <div class="cardconverter card border-2 p-2 bg-success bg-opacity-75">
         <div class="card-title text-center text-black mb-3">Monto en ARG</div>
         <div class="input-group mb-5 ps-5 pe-5 ">
-            <span class="input-group-text ">$</span>
-            <input type="number" min="1" class=" form-control input">
-                
+            <span class=" input-group-text ">$</span>
+            <input type="number" min="1" id="monto" class=" form-control input" oninput="calcularMulti()">
+                         
         </div>
+        <p class="card-footer">El total de Dolares es:<span id="resultadoMulti"></span></p>
     </div>
     
 </div>
@@ -47,7 +48,7 @@
             <div class="card bg-c-yellow order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Dolar Solidario</h6>
-                    <h2 class="dSolidario text-right"><i class="fa fa-refresh f-left"></i><span id="dSolidario">@Model.Oficial.Value_Sell </span></h2>
+                    <h2 class="dSolidario text-right"><i class="fa fa-refresh f-left"></i><span id="dSolidario"> </span></h2>
                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
                 </div>
             </div>
@@ -67,8 +68,18 @@
     <script>
         let dolarOficial = parseFloat(@Model.Oficial.Value_Sell);
         let dolarSolidario = dolarOficial * 1.65;
-        document.getElementById('dSolidario').textContent = dolarSolidario.toFixed(2)
+        document.getElementById('dSolidario').textContent = dolarSolidario.toFixed(2);
+        
+        function calcularMulti() {
+            
+            var numero = document.getElementById("monto").value;
+                       
+            var resultado = numero / parseFloat(@Model.Blue.Value_Sell);
 
+            document.getElementById("resultadoMulti").textContent = resultado.toFixed(2);
+            
+          
+        }
     </script>
 
 </div>
